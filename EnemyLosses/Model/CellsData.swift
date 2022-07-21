@@ -13,7 +13,7 @@ struct Technique{
     var amount: Int
 }
 
-// default data
+// default data (second day)
 var equipmentCellData: [Technique] = [
     Technique(title: "Літаки", image: UIImage(named: "aircraft")!, amount: 10),
     Technique(title: "Автомобілі", image: UIImage(named: "car")!, amount: 100),
@@ -23,7 +23,7 @@ var equipmentCellData: [Technique] = [
     Technique(title: "Артилерія", image: UIImage(named: "artillery")!, amount: 49),
     Technique(title: "РСЗВ", image: UIImage(named: "missile")!, amount: 4),
     
-    Technique(title: "Вертольоти", image: UIImage(named: "helicopter")!, amount: 7),
+    Technique(title: "Гелікоптери", image: UIImage(named: "helicopter")!, amount: 7),
     Technique(title: "Цистерни", image: UIImage(named: "fuel-tank")!, amount: 60),
     Technique(title: "Дрони", image: UIImage(named: "drone")!, amount: 0),
     

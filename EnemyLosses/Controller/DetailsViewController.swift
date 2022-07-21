@@ -16,7 +16,7 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        label.text = equipmentCellData[row].title
+ //       label.text = equipmentCellData[row].title
         //img.image = equipmentCellData[row].image
     }
     

@@ -13,6 +13,7 @@ class TechniqueCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var techniqueNameLabel: UILabel!
     @IBOutlet weak var techniqueAmountLabel: UILabel!
     
+    // setup cells params
     func setup(with technique: Technique){
         techniqueImage.image = technique.image
         techniqueNameLabel.text = String(technique.title)

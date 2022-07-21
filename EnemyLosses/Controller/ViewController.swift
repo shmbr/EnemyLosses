@@ -11,7 +11,6 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var soldiersAmountLabel: UILabel!
     @IBOutlet weak var prisonersAmountLabel: UILabel!
-
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var dataTextField: UITextField!
@@ -48,7 +47,7 @@ class ViewController: UIViewController {
         dataPicker.backgroundColor = myMiddleGreenColor
         
         dataPicker.minimumDate = Calendar(identifier: .gregorian).date(from: DateComponents(year: 2022, month: 2, day: 25))
-        dataPicker.maximumDate = Calendar(identifier: .gregorian).date(from: DateComponents(year: 2022, month: 5, day: 31))
+        dataPicker.maximumDate = Calendar(identifier: .gregorian).date(from: DateComponents(year: 2022, month: 7, day: 21))
         
         dataTextField.inputView = dataPicker
         dataTextField.inputAccessoryView = createToolBar()

@@ -7,23 +7,23 @@
 
 import UIKit
 
-
 extension ViewController: UICollectionViewDataSource{
 
+    /// set amount of cells
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return equipmentCellData.count
     }
     
+    /// set cells main params
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TechniqueCollectionViewCell", for: indexPath) as! TechniqueCollectionViewCell
-        
         cell.setup(with: equipmentCellData[indexPath.row])
         return cell
     }
     
+    /// cell pressed action, go to new storyboard
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController
-        
         vc?.row = indexPath.row
         self.navigationController?.pushViewController(vc!, animated: true)
     }
@@ -36,45 +36,24 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
         let bound = collectionView.bounds.width
+        let spacing = (Int(bound) - 242) / 2
         
-        var spacing = (Int(bound) - 242) / 2
-        
-        //spacing -= 2
-        
-        print("bound = \(bound)")
-        
-        print("spacing = \(spacing)")
-    
-        
+        /// two cells per row case and more than two cells case
         if (((Int(bound) - 60) / 111) == 2) == true{
             return UIEdgeInsets(top: 0, left: CGFloat(spacing), bottom: 0, right: CGFloat(spacing))
         } else {
             return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         }
-        //return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     }
     
     
-    
+    /// set cell size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-//        let minWidth = 111
-//        let screenBounds = collectionView.bounds
-//        let amountOfCellsInRow = (Int(screenBounds.width) - 60) / minWidth
-//
-//        var cellWidth = minWidth
-//
-//        cellWidth = (Int(screenBounds.width) - 60) / 2
-        
         return CGSize(width: 111, height: 128)
     }
     
+    /// set cell spacing
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        
-
-        //if (((Int(collectionView.bounds.width) - 60) / 111) == 2) == true{ return 40 }
-        //else{ return 20 }
-        
         return 20
     }
     
@@ -83,7 +62,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
     }
 }
 
-
+// add corner radius params setting
 extension UIView {
 @IBInspectable var cornerRadius: CGFloat {
     get {
