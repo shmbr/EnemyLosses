@@ -5,15 +5,6 @@
 //  Created by Yu_SHMBR on 15.07.2022.
 //
 
-///
-///
-///
-
-/// TEST 
-///
-///
-///
-
 import UIKit
 
 struct Technique{

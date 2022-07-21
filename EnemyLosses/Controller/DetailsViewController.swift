@@ -9,8 +9,8 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var img: UIImageView!
+    //@IBOutlet weak var label: UILabel!
+    //@IBOutlet weak var img: UIImageView!
     
     var row = -1
     

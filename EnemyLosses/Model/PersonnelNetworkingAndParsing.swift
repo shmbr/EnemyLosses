@@ -26,7 +26,6 @@ func getPersonnelData(){
             let jsString = String(data: data, encoding: .utf8)!
             // convert back to data after replacements
             let newData = jsString.replacingOccurrences(of: "NaN", with: "null").data(using: .utf8)!
-            
             DispatchQueue.main.async {
                 do {
                     personnelLossesArr = try JSONDecoder().decode([Personnel].self, from: newData)

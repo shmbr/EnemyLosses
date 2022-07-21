@@ -63,7 +63,6 @@ enum Day: Codable {
             self = .string(v)
             return
         }
-
         throw Day.ParseError.notRecognizedType(value)
     }
 

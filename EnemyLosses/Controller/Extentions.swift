@@ -65,7 +65,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
 //        var cellWidth = minWidth
 //
 //        cellWidth = (Int(screenBounds.width) - 60) / 2
-        //print("cells in row = \(amountOfCellsInRow)")
         
         return CGSize(width: 111, height: 128)
     }

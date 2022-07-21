@@ -8,7 +8,6 @@
 import Foundation
 
 struct Personnel: Codable {
-    
     var date: String?
     var day: Int?
     var soldiers: Int?
