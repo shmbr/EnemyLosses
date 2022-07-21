@@ -22,12 +22,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Yu_Shmbr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpC-XQ-cHU">
+                                <rect key="frame" x="57" y="493" width="300" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="5TG-kZ-sOJ"/>
+                                    <constraint firstAttribute="width" constant="300" id="bda-kr-m50"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="MAw-BE-aLC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="B4I-vp-Ty4"/>
                             <constraint firstItem="MAw-BE-aLC" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="DAw-6L-PYn"/>
+                            <constraint firstItem="mpC-XQ-cHU" firstAttribute="top" secondItem="MAw-BE-aLC" secondAttribute="bottom" constant="15" id="VeH-s6-dU9"/>
+                            <constraint firstItem="mpC-XQ-cHU" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dzh-dV-4sT"/>
                         </constraints>
                     </view>
                 </viewController>
