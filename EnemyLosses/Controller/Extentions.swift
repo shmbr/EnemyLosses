@@ -11,7 +11,10 @@ extension ViewController: UICollectionViewDataSource{
 
     /// set amount of cells
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return equipmentCellData.count
+    
+        if Int(dayLabel.text!)! >= 67{ return equipmentCellData.count - 2 }
+        else { return equipmentCellData.count }
+        //return equipmentCellData.count
     }
     
     /// set cells main params
@@ -24,7 +27,7 @@ extension ViewController: UICollectionViewDataSource{
     /// cell pressed action, go to new storyboard
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController
-        vc?.day = 1221
+        //vc?.day = 1221
         vc?.row = indexPath.row
         self.navigationController?.pushViewController(vc!, animated: true)
     }

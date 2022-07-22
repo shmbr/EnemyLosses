@@ -11,7 +11,6 @@ class DetailsViewController: UIViewController {
 
     
     @IBOutlet weak var mainImage: UIImageView!
-    
     @IBOutlet weak var titleLable: UILabel!
     @IBOutlet weak var totalLable: UILabel!
     @IBOutlet weak var prewDayLabel: UILabel!
