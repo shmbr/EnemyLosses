@@ -15,7 +15,6 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var prewDayLabel: UILabel!
     
     var row = -1
-    var day = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()

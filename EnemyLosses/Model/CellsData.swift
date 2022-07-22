@@ -17,7 +17,6 @@ struct Technique{
 // default data (second day)
 var equipmentCellData: [Technique] = [
     Technique(title: "Літаки", image: UIImage(named: "aircraft")!, amount: 10, prewDayAmount: 0),
-    
     Technique(title: "Танки", image: UIImage(named: "tank")!, amount: 80, prewDayAmount: 0),
     Technique(title: "БТР", image: UIImage(named: "btr")!, amount: 516, prewDayAmount: 0),
     Technique(title: "Артилерія", image: UIImage(named: "artillery")!, amount: 49, prewDayAmount: 0),

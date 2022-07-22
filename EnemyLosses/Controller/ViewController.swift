@@ -19,9 +19,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /// load data
         getPersonnelData()
         getEquipmentData()
-        
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -32,7 +33,6 @@ class ViewController: UIViewController {
     func createToolBar() -> UIToolbar{
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
-        
         
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
         toolBar.setItems([doneButton], animated: true)
@@ -53,6 +53,7 @@ class ViewController: UIViewController {
         dataTextField.inputAccessoryView = createToolBar()
     }
     
+    /// majority of app logic depends on date changing, some choosing new date is main trigger
     @objc func donePressed(){
         
         /// animation section
@@ -62,25 +63,30 @@ class ViewController: UIViewController {
         animation.subtype = CATransitionSubtype.fromTop
         animation.duration = 0.25
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeZone = .none
+        /// date formatting
+        let dateFormatter1 = ISO8601DateFormatter()
+        let dateFormatter2 = DateFormatter()
+        dateFormatter2.dateStyle = .short
+        dateFormatter2.timeZone = .none
 
-        let dayyy = dataPicker.date
-        let fmt = ISO8601DateFormatter()
-        let date0 = fmt.date(from: "2022-2-22T00:00:00+0000")!
-        let diffs = Calendar.current.dateComponents([ .day], from: date0, to: dayyy)
+        /// count dates difference
+        let mainDay = dataPicker.date
+        let date0 = dateFormatter1.date(from: "2022-2-22T00:00:00+0000")!
+        let diffs = Calendar.current.dateComponents([ .day], from: date0, to: mainDay)
         
-        self.dataTextField.text = dateFormatter.string(from: dataPicker.date)
+        /// change textField text with animation
+        self.dataTextField.text = dateFormatter2.string(from: dataPicker.date)
         self.dataTextField.layer.add(animation, forKey: CATransitionType.fade.rawValue)
 
+        /// change label text with animation
         self.dayLabel.text = "\(diffs.day!)"
         self.dayLabel.layer.add(animation, forKey: CATransitionType.fade.rawValue)
         
+        /// change label text with animation
         self.soldiersAmountLabel.text = "\(personnelLossesArr[diffs.day! - 2].soldiers ?? 0)"
         self.soldiersAmountLabel.layer.add(animation, forKey: CATransitionType.fade.rawValue)
         
-                
+        /// updete view due to available information about prisoners amount
         if(personnelLossesArr[diffs.day! - 2].prisoners == nil){
             prisonersAmountLabel.font = prisonersAmountLabel.font.withSize(15)
             prisonersAmountLabel.text = "Немає даних"
@@ -90,8 +96,7 @@ class ViewController: UIViewController {
             self.prisonersAmountLabel.layer.add(animation, forKey: CATransitionType.fade.rawValue)
         }
         
-        self.view.endEditing(true)
-        
+        /// update cells information
         equipmentCellData[0].amount = equimpentLossesArr[diffs.day! - 2].aircraft ?? 0
         equipmentCellData[1].amount = equimpentLossesArr[diffs.day! - 2].tank ?? 0
         equipmentCellData[2].amount = equimpentLossesArr[diffs.day! - 2].APC ?? 0
@@ -107,6 +112,7 @@ class ViewController: UIViewController {
         equipmentCellData[12].amount = equimpentLossesArr[diffs.day! - 2].auto ?? 0
         equipmentCellData[13].amount = equimpentLossesArr[diffs.day! - 2].fuel ?? 0
         
+        /// update cells information
         if diffs.day! > 2{
             equipmentCellData[0].prewDayAmount = equimpentLossesArr[diffs.day! - 3].aircraft ?? 0
             equipmentCellData[1].prewDayAmount = equimpentLossesArr[diffs.day! - 3].tank ?? 0
@@ -127,6 +133,8 @@ class ViewController: UIViewController {
                 equipmentCellData[i].prewDayAmount = 0
             }
         }
+        /// reload data and end editing
         collectionView.reloadData()
+        self.view.endEditing(true)
     }
 }

@@ -11,10 +11,10 @@ extension ViewController: UICollectionViewDataSource{
 
     /// set amount of cells
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
+        
+        /// due to input data changing after 67 we are hiding unnecessary separeted auto and fuel cells to avoid duplicate information
         if Int(dayLabel.text!)! >= 67{ return equipmentCellData.count - 2 }
         else { return equipmentCellData.count }
-        //return equipmentCellData.count
     }
     
     /// set cells main params
@@ -27,7 +27,6 @@ extension ViewController: UICollectionViewDataSource{
     /// cell pressed action, go to new storyboard
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController
-        //vc?.day = 1221
         vc?.row = indexPath.row
         self.navigationController?.pushViewController(vc!, animated: true)
     }
@@ -39,17 +38,18 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        let bound = collectionView.bounds.width
-        let spacing = (Int(bound) - 242) / 2
+        /// spacing depends on device size
+        let boundsWidth = collectionView.bounds.width
+        /// spacing bettwen view bound and cell bound  depends on min cell witdh (111) * 2 +  prefereble space bettwen two cells (20)
+        let spacing = (Int(boundsWidth) - 242) / 2
         
         /// two cells per row case and more than two cells case
-        if (((Int(bound) - 60) / 111) == 2) == true{
+        if (((Int(boundsWidth) - 60) / 111) == 2) == true{
             return UIEdgeInsets(top: 0, left: CGFloat(spacing), bottom: 0, right: CGFloat(spacing))
         } else {
             return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         }
     }
-    
     
     /// set cell size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -61,6 +61,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
         return 20
     }
     
+    /// set cell spacing
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
     }
