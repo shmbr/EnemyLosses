@@ -9,12 +9,10 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
-    
     @IBOutlet weak var mainImage: UIImageView!
     @IBOutlet weak var titleLable: UILabel!
     @IBOutlet weak var totalLable: UILabel!
     @IBOutlet weak var prewDayLabel: UILabel!
-
     
     var row = -1
     var day = -1
@@ -27,6 +25,4 @@ class DetailsViewController: UIViewController {
         prewDayLabel.text = String(equipmentCellData[row].amount - equipmentCellData[row].prewDayAmount)
         mainImage.image = equipmentCellData[row].image
     }
-    
-
 }

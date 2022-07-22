@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// russia_losses_personnel.json data model
 struct Personnel: Codable {
     var date: String?
     var day: Int?
