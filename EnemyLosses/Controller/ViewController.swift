@@ -53,7 +53,7 @@ class ViewController: UIViewController {
         dataTextField.inputAccessoryView = createToolBar()
     }
     
-    /// majority of app logic depends on date changing, some choosing new date is main trigger
+    /// majority of app logic depends on date changing, so choosing new date is main trigger
     @objc func donePressed(){
         
         /// animation section
@@ -133,6 +133,7 @@ class ViewController: UIViewController {
                 equipmentCellData[i].prewDayAmount = 0
             }
         }
+        
         /// reload data and end editing
         collectionView.reloadData()
         self.view.endEditing(true)

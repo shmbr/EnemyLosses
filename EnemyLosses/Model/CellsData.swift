@@ -14,7 +14,7 @@ struct Technique{
     var prewDayAmount: Int
 }
 
-// default data (second day)
+// default cell data (second day)
 var equipmentCellData: [Technique] = [
     Technique(title: "Літаки", image: UIImage(named: "aircraft")!, amount: 10, prewDayAmount: 0),
     Technique(title: "Танки", image: UIImage(named: "tank")!, amount: 80, prewDayAmount: 0),

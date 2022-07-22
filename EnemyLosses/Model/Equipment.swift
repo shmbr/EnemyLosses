@@ -42,7 +42,7 @@ struct Equipment: Codable {
     }
 }
 
-/// 'Day' created to avoid collision with wrong data types (9 day is the ony String day)
+/// 'Day' created to avoid collision with wrong data types ("9" day is the ony String day)
 enum Day: Codable {
     case int(Int)
     case string(String)
