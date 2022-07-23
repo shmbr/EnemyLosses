@@ -19,6 +19,7 @@ Ps. Date can be set in datePicker after tapping on date.text. All information up
 
 # Features to add/update/improve:
 * UI for IPads
+* Add scroll view
 * Add Unit tests
 * Add diagrams/graphs for clearness and comparison (maybe with third-party libraries)
 
