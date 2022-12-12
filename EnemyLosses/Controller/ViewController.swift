@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var soldiersAmountLabel: UILabel!
     @IBOutlet weak var prisonersAmountLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var dataTextField: UITextField!
     
     let dataPicker = UIDatePicker()
+    
+    let secondDayData = equipmentCellData
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +70,7 @@ class ViewController: UIViewController {
         let dateFormatter2 = DateFormatter()
         dateFormatter2.dateStyle = .short
         dateFormatter2.timeZone = .none
-
+        
         /// count dates difference
         let mainDay = dataPicker.date
         let date0 = dateFormatter1.date(from: "2022-2-22T00:00:00+0000")!
@@ -77,7 +79,7 @@ class ViewController: UIViewController {
         /// change textField text with animation
         self.dataTextField.text = dateFormatter2.string(from: dataPicker.date)
         self.dataTextField.layer.add(animation, forKey: CATransitionType.fade.rawValue)
-
+        
         /// change label text with animation
         self.dayLabel.text = "\(diffs.day!)"
         self.dayLabel.layer.add(animation, forKey: CATransitionType.fade.rawValue)
@@ -96,44 +98,26 @@ class ViewController: UIViewController {
             self.prisonersAmountLabel.layer.add(animation, forKey: CATransitionType.fade.rawValue)
         }
         
-        /// update cells information
-        equipmentCellData[0].amount = equimpentLossesArr[diffs.day! - 2].aircraft ?? 0
-        equipmentCellData[1].amount = equimpentLossesArr[diffs.day! - 2].tank ?? 0
-        equipmentCellData[2].amount = equimpentLossesArr[diffs.day! - 2].APC ?? 0
-        equipmentCellData[3].amount = equimpentLossesArr[diffs.day! - 2].artillery ?? 0
-        equipmentCellData[4].amount = equimpentLossesArr[diffs.day! - 2].MRL ?? 0
-        equipmentCellData[5].amount = equimpentLossesArr[diffs.day! - 2].helicopter ?? 0
-        equipmentCellData[6].amount = equimpentLossesArr[diffs.day! - 2].drone ?? 0
-        equipmentCellData[7].amount = equimpentLossesArr[diffs.day! - 2].ship ?? 0
-        equipmentCellData[8].amount = equimpentLossesArr[diffs.day! - 2].PPO ?? 0
-        equipmentCellData[9].amount = equimpentLossesArr[diffs.day! - 2].specialEquipment ?? 0
-        equipmentCellData[10].amount = equimpentLossesArr[diffs.day! - 2].venicleAndFuel ?? 0
-        equipmentCellData[11].amount = equimpentLossesArr[diffs.day! - 2].rocket ?? 0
-        equipmentCellData[12].amount = equimpentLossesArr[diffs.day! - 2].auto ?? 0
-        equipmentCellData[13].amount = equimpentLossesArr[diffs.day! - 2].fuel ?? 0
-        
-        /// update cells information
+        /// update cells information        
         if diffs.day! > 2{
-            equipmentCellData[0].prewDayAmount = equimpentLossesArr[diffs.day! - 3].aircraft ?? 0
-            equipmentCellData[1].prewDayAmount = equimpentLossesArr[diffs.day! - 3].tank ?? 0
-            equipmentCellData[2].prewDayAmount = equimpentLossesArr[diffs.day! - 3].APC ?? 0
-            equipmentCellData[3].prewDayAmount = equimpentLossesArr[diffs.day! - 3].artillery ?? 0
-            equipmentCellData[4].prewDayAmount = equimpentLossesArr[diffs.day! - 3].MRL ?? 0
-            equipmentCellData[5].prewDayAmount = equimpentLossesArr[diffs.day! - 3].helicopter ?? 0
-            equipmentCellData[6].prewDayAmount = equimpentLossesArr[diffs.day! - 3].drone ?? 0
-            equipmentCellData[6].prewDayAmount = equimpentLossesArr[diffs.day! - 3].ship ?? 0
-            equipmentCellData[8].prewDayAmount = equimpentLossesArr[diffs.day! - 3].PPO ?? 0
-            equipmentCellData[9].prewDayAmount = equimpentLossesArr[diffs.day! - 2].specialEquipment ?? 0
-            equipmentCellData[10].prewDayAmount = equimpentLossesArr[diffs.day! - 3].venicleAndFuel ?? 0
-            equipmentCellData[11].prewDayAmount = equimpentLossesArr[diffs.day! - 3].rocket ?? 0
-            equipmentCellData[12].prewDayAmount = equimpentLossesArr[diffs.day! - 3].auto ?? 0
-            equipmentCellData[13].prewDayAmount = equimpentLossesArr[diffs.day! - 3].fuel ?? 0
+            equipmentCellData[0] = Technique(title: equipmentCellData[0].title, image: equipmentCellData[0].image, amount: equimpentLossesArr[diffs.day! - 2].aircraft ?? 0, prewDayAmount: equimpentLossesArr[diffs.day! - 3].aircraft ?? 0)
+            equipmentCellData[1] = Technique(title: equipmentCellData[1].title, image: equipmentCellData[1].image, amount: equimpentLossesArr[diffs.day! - 2].tank ?? 0, prewDayAmount: equimpentLossesArr[diffs.day! - 3].tank ?? 0)
+            equipmentCellData[2] = Technique(title: equipmentCellData[2].title, image: equipmentCellData[2].image, amount: equimpentLossesArr[diffs.day! - 2].APC ?? 0, prewDayAmount: equimpentLossesArr[diffs.day! - 3].APC ?? 0)
+            equipmentCellData[3] = Technique(title: equipmentCellData[3].title, image: equipmentCellData[3].image, amount: equimpentLossesArr[diffs.day! - 2].artillery ?? 0, prewDayAmount: equimpentLossesArr[diffs.day! - 3].artillery ?? 0)
+            equipmentCellData[4] = Technique(title: equipmentCellData[4].title, image: equipmentCellData[4].image, amount: equimpentLossesArr[diffs.day! - 2].MRL ?? 0, prewDayAmount: equimpentLossesArr[diffs.day! - 3].MRL ?? 0)
+            equipmentCellData[5] = Technique(title: equipmentCellData[5].title, image: equipmentCellData[5].image, amount: equimpentLossesArr[diffs.day! - 2].helicopter ?? 0, prewDayAmount: equimpentLossesArr[diffs.day! - 3].helicopter ?? 0)
+            equipmentCellData[6] = Technique(title: equipmentCellData[6].title, image: equipmentCellData[6].image, amount: equimpentLossesArr[diffs.day! - 2].drone ?? 0, prewDayAmount: equimpentLossesArr[diffs.day! - 3].drone ?? 0)
+            equipmentCellData[7] = Technique(title: equipmentCellData[7].title, image: equipmentCellData[7].image, amount: equimpentLossesArr[diffs.day! - 2].ship ?? 0, prewDayAmount: equimpentLossesArr[diffs.day! - 3].ship ?? 0)
+            equipmentCellData[8] = Technique(title: equipmentCellData[8].title, image: equipmentCellData[8].image, amount: equimpentLossesArr[diffs.day! - 2].PPO ?? 0, prewDayAmount: equimpentLossesArr[diffs.day! - 3].PPO ?? 0)
+            equipmentCellData[9] = Technique(title: equipmentCellData[9].title, image: equipmentCellData[9].image, amount: equimpentLossesArr[diffs.day! - 2].specialEquipment ?? 0, prewDayAmount: equimpentLossesArr[diffs.day! - 3].specialEquipment ?? 0)
+            equipmentCellData[10] = Technique(title: equipmentCellData[10].title, image: equipmentCellData[10].image, amount: equimpentLossesArr[diffs.day! - 2].venicleAndFuel ?? 0, prewDayAmount: equimpentLossesArr[diffs.day! - 3].venicleAndFuel ?? 0)
+            equipmentCellData[11] = Technique(title: equipmentCellData[11].title, image: equipmentCellData[11].image, amount: equimpentLossesArr[diffs.day! - 2].rocket ?? 0, prewDayAmount: equimpentLossesArr[diffs.day! - 3].rocket ?? 0)
+            equipmentCellData[12] = Technique(title: equipmentCellData[12].title, image: equipmentCellData[12].image, amount: equimpentLossesArr[diffs.day! - 2].auto ?? 0, prewDayAmount: equimpentLossesArr[diffs.day! - 3].auto ?? 0)
+            equipmentCellData[13] = Technique(title: equipmentCellData[13].title, image: equipmentCellData[13].image, amount: equimpentLossesArr[diffs.day! - 2].fuel ?? 0, prewDayAmount: equimpentLossesArr[diffs.day! - 3].fuel ?? 0)
         } else {
-            for i in 0...13 {
-                equipmentCellData[i].prewDayAmount = 0
-            }
+            equipmentCellData = secondDayData
         }
-        
+
         /// reload data and end editing
         collectionView.reloadData()
         self.view.endEditing(true)
